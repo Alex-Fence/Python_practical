@@ -16,9 +16,11 @@ set_results = set(sorted_list)
 dict_results = {}
 for search_str in set_results:
     dict_results[search_str] = sorted_list.count(search_str)
+#сортировка словаря
+sorted_list_tupl = sorted(dict_results.items(), key=operator.itemgetter(1), reverse=True)
+print(sorted_list_tupl)
 
-sorted_tupl = sorted(dict_results.items(), key=operator.itemgetter(1))
-
+# print(sorted(sorted_tupl,key=operator.itemgetter(0)))
 
 # print(f'length = {len(l)}')
 # for s in l:
