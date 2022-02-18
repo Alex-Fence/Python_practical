@@ -4,7 +4,7 @@
 
 from urllib.request import urlopen
 import re
-import operator
+import collections
 
 url = 'https://stepik.org/media/attachments/lesson/209719/2.html'
 regex = '<code>(.*?)</code>'
@@ -12,16 +12,12 @@ regex = '<code>(.*?)</code>'
 html_page = urlopen(url).read().decode('utf-8')
 
 sorted_list = sorted(re.findall(regex, html_page))
-set_results = set(sorted_list)
-dict_results = {}
-for search_str in set_results:
-    dict_results[search_str] = sorted_list.count(search_str)
-#сортировка словаря
-sorted_list_tupl = sorted(dict_results.items(), key=operator.itemgetter(1), reverse=True)
-print(sorted_list_tupl)
+counter_list = collections.Counter(sorted_list)
 
-# print(sorted(sorted_tupl,key=operator.itemgetter(0)))
+res_str = str()
+for element in counter_list.most_common(15):  # most_common( ) самые популярные
+    res_str += str(element[0]) + ' '
+print(res_str)
 
-# print(f'length = {len(l)}')
-# for s in l:
-#     print(s)
+# #сортировка словаря требуется import operator
+# sorted_list_tupl = sorted(dict_results.items(), key=operator.itemgetter(1), reverse=True)
