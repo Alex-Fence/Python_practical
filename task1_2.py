@@ -5,6 +5,8 @@
 from urllib.request import urlopen
 import re
 import collections
+from bs4 import BeautifulSoup
+
 
 url = 'https://stepik.org/media/attachments/lesson/209719/2.html'
 regex = '<code>(.*?)</code>'
