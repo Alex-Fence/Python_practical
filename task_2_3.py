@@ -12,9 +12,8 @@ import xlrd3
 wb = xlrd3.open_workbook('trekking1.xlsx')
 sheet = wb.sheet_by_index(0)
 dict_groc = {}
-for n_row in range(1, 37):
+for n_row in range(1, 38):
     dict_groc[sheet.cell_value(n_row, 0)] = int(sheet.cell_value(n_row, 1))
-#    print(f' {sheet.cell_value(n_row, 0)} {dict_groc[sheet.cell_value(n_row, 0)]}')
-for result in sorted(dict_groc, key=dict_groc.get, reverse=True):
-    print(result)
-
+# сортировка словаря
+for res in sorted(dict_groc.items(), key=lambda x: (-x[1], x[0])):
+    print(res[0])
