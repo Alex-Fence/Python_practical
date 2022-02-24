@@ -45,7 +45,7 @@ with xlrd3.open_workbook('trekking3.xlsx') as wb:
                 kall_list_sum[i] += kall_list[i]
         else:
             resoult_by_day(kall_list_sum)
-            kall_list_s = [0, 0, 0, 0]
+            kall_list_sum = [0, 0, 0, 0]
             indx = product_list.index(sheet1.cell_value(n_row, 1))
             kall_list = []
             for energy_val in sheet0.row_values(indx + 1, 1, 5):
