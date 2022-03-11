@@ -11,5 +11,5 @@ import xml.etree.ElementTree as ET
 root_node = ET.parse('map1.osm').getroot()
 print(root_node)
 for child in root_node:
-    if child.tag == 'node':
+    if child.tag == 'teg':
         print(f'teg={child.tag}, attr={child.attrib}')
