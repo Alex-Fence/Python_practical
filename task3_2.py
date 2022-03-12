@@ -9,8 +9,16 @@ import xml.etree.ElementTree as ET
 # wget.download(url)
 
 root_node = ET.parse('map1.osm').getroot()
-print(root_node)
+
+tags = {'yes': 0, 'no': 0}
 for child in root_node:
     if child.tag == 'node':
-
-        print(f'teg={child.tag}, attr={child.attrib}')
+        is_tag = False
+        for sub_child in child:
+            if sub_child.tag == 'tag':
+                is_tag = True
+        if is_tag:
+            tags['yes'] += 1
+        else:
+            tags['no'] += 1
+print(f"yes = {tags['yes']} no = {tags['no']}")
